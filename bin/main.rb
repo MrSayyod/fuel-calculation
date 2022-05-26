@@ -8,4 +8,15 @@ class Flight
     create_spaceship(spaceship_mass)
     flight_journey
   end
+
+  def create_spaceship(mass)
+    @ship = Spaceship.new(mass)
+  end
+
+  def flight_journey
+    @flight_path.each do |f|
+      @total_fuel += @ship.calculate(@ship.mass + @total_fuel, f)
+    end
+    puts "Total fuel for the trip is #{@total_fuel}"
+  end
 end
