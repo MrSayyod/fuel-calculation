@@ -14,4 +14,14 @@ class Spaceship
     fuel
   end
 
+  def land(mass, gravity)
+    fuel = (mass * gravity * 0.033 - 42).floor
+    extra_fuel = fuel
+    while extra_fuel > 0
+      extra_fuel = (extra_fuel * gravity * 0.033 - 42).floor
+      fuel+= extra_fuel if extra_fuel.positive?
+    end
+    fuel
+  end
+
 end
